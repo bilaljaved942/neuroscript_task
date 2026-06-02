@@ -46,7 +46,7 @@
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-page);
+  background: linear-gradient(to bottom, #F5EFE6 0%, #FFFFFF 600px, #FFFFFF 100%);
   color: var(--text-main);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

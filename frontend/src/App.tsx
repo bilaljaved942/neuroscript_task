@@ -4,7 +4,6 @@ import { Header } from './components/Header';
 import { ProductShowcase } from './components/ProductShowcase';
 import { ProductForm } from './components/ProductForm';
 import { Footer } from './components/Footer';
-import { AdminPanel } from './components/AdminPanel';
 
 const DEFAULT_CONTENT: SiteContent = {
   announcement: "Nieuw: Lab in een doosje! Bekijk onze vernieuwde DIY Kits hier",
@@ -123,22 +122,22 @@ const DEFAULT_CONTENT: SiteContent = {
         bestValue: false,
         priceMonthly: 7.72,
         priceOriginal: 7.72,
-        "billingInfo": "One-time purchase",
-        "features": [
+        billingInfo: "One-time purchase",
+        features: [
           "Standard delivery",
           "No subscription lock-in"
         ],
-        "welcomeKitTitle": "",
-        "welcomeKitItems": []
+        welcomeKitTitle: "",
+        welcomeKitItems: []
       }
     ],
-    "trustBadges": [
+    trustBadges: [
       { "label": "Natuurlijk", "sub": "100%", "icon": "🌿" },
       { "label": "Vegan", "sub": "VEGAN", "icon": "🌱" },
       { "label": "Plastic vrij", "sub": "Plastic vrij", "icon": "🚫" },
       { "label": "Aluminium vrij", "sub": "Aluminium vrij", "icon": "🛡️" }
     ],
-    "bottomChecklist": [
+    bottomChecklist: [
       "Gratis verzending vanaf €35,- naar NL, BE & DUI.",
       "Voor 23:30 besteld, morgen in huis.",
       "Klanten geven ons een 9.4 op Kiyoh",
@@ -150,7 +149,6 @@ const DEFAULT_CONTENT: SiteContent = {
 const App: React.FC = () => {
   const [content, setContent] = useState<SiteContent>(DEFAULT_CONTENT);
   const [loading, setLoading] = useState<boolean>(true);
-  const [adminOpen, setAdminOpen] = useState<boolean>(false);
 
   // Fetch page content on mount
   useEffect(() => {
@@ -173,39 +171,6 @@ const App: React.FC = () => {
 
     fetchContent();
   }, []);
-
-  // Save content to backend API
-  const handleSaveContent = async (updatedContent: SiteContent): Promise<boolean> => {
-    try {
-      const response = await fetch('/api/content', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedContent),
-      });
-
-      if (!response.ok) {
-        throw new Error('Save operation failed on server');
-      }
-
-      const result = await response.json();
-      if (result.status === 'ok') {
-        setContent(updatedContent);
-        return true;
-      }
-      return false;
-    } catch (err) {
-      console.error('Error saving content:', err);
-      return false;
-    }
-  };
-
-  // Reset page contents back to standard defaults
-  const handleResetContent = async () => {
-    setContent(DEFAULT_CONTENT);
-    await handleSaveContent(DEFAULT_CONTENT);
-  };
 
   if (loading) {
     return (
@@ -255,14 +220,12 @@ const App: React.FC = () => {
 
   return (
     <div className="app-root-layout">
-      {/* Scrollable Main Area */}
+      {/* Navigation Header */}
       <Header 
         announcement={content.announcement}
         benefitsTop={content.benefitsTop}
         siteName={content.siteName} 
         navigation={content.navigation}
-        adminOpen={adminOpen} 
-        onToggleAdmin={() => setAdminOpen(!adminOpen)} 
       />
 
       <main className="main-content-flow">
@@ -276,15 +239,6 @@ const App: React.FC = () => {
       </main>
 
       <Footer siteName={content.siteName} />
-
-      {/* Admin Panel slide-over customizer drawer */}
-      <AdminPanel 
-        content={content} 
-        isOpen={adminOpen} 
-        onClose={() => setAdminOpen(false)} 
-        onSave={handleSaveContent} 
-        onReset={handleResetContent} 
-      />
 
       <style>{`
         .app-root-layout {

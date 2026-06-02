@@ -5,17 +5,13 @@ interface HeaderProps {
   benefitsTop: string[];
   siteName: string;
   navigation: string[];
-  adminOpen: boolean;
-  onToggleAdmin: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   announcement,
   benefitsTop,
   siteName,
-  navigation,
-  adminOpen,
-  onToggleAdmin
+  navigation
 }) => {
   return (
     <header className="site-header">
@@ -26,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       )}
 
-      {/* 2. Top row with 3 customer benefits */}
+      {/* 2. Top row with 3 customer benefits (Warm Beige Background) */}
       {benefitsTop && benefitsTop.length > 0 && (
         <div className="benefits-top-bar">
           <div className="container benefits-container">
@@ -37,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       )}
 
-      {/* 3. Main Brand Header with Search and Actions */}
+      {/* 3. Main Brand Header with Search and Actions (Warm Beige Background) */}
       <div className="main-brand-header">
         <div className="container header-main-container">
           {/* Brand Logo */}
@@ -59,15 +55,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Header Action Icons */}
           <div className="header-action-group">
-            {/* Admin toggle Button */}
-            <button 
-              className={`edit-toggle-badge ${adminOpen ? 'active' : ''}`}
-              onClick={onToggleAdmin}
-              title="Toggle Customizer Panel"
-            >
-              ⚙️ {adminOpen ? 'Sluit Edit' : 'Edit Content'}
-            </button>
-
             {/* Profile */}
             <a href="#" className="header-icon-btn" aria-label="User profile">
               👤
@@ -84,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* 4. Bottom Menu Navigation */}
+      {/* 4. Bottom Menu Navigation (White Background) */}
       {navigation && navigation.length > 0 && (
         <nav className="bottom-navigation-menu">
           <div className="container nav-menu-container">
@@ -97,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
       )}
 
-      {/* Breadcrumb row */}
+      {/* Breadcrumb row (White Background) */}
       <div className="breadcrumb-bar">
         <div className="container">
           <p className="breadcrumb-text">🏠 &gt; Products &gt; Bath Bombs</p>
@@ -106,7 +93,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       <style>{`
         .site-header {
-          background-color: #FFFFFF;
+          background-color: #F5EFE6;
           border-bottom: 1px solid var(--border-color);
           width: 100%;
           z-index: 100;
@@ -128,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         /* 3 customer benefits bar */
         .benefits-top-bar {
-          background-color: #F6F4F0;
+          background-color: #F5EFE6;
           border-bottom: 1px solid var(--border-color);
           padding: 8px 0;
         }
@@ -161,6 +148,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         /* Main middle row */
         .main-brand-header {
+          background-color: #F5EFE6;
           padding: 20px 0;
           border-bottom: 1px solid var(--border-color);
         }
@@ -203,7 +191,7 @@ export const Header: React.FC<HeaderProps> = ({
           border: 1px solid var(--border-color);
           border-radius: 4px;
           padding: 10px 40px 10px 14px;
-          background-color: #FAF9F6;
+          background-color: #FFFFFF;
           font-family: var(--font-body);
           outline: none;
           font-size: 13px;
@@ -246,7 +234,7 @@ export const Header: React.FC<HeaderProps> = ({
         }
 
         .header-icon-btn:hover {
-          background-color: #FAF8F5;
+          background-color: rgba(0, 0, 0, 0.05);
         }
 
         .badge-container {
@@ -270,32 +258,9 @@ export const Header: React.FC<HeaderProps> = ({
           border: 1px solid #FFFFFF;
         }
 
-        .edit-toggle-badge {
-          background-color: var(--color-accent);
-          color: #FFFFFF;
-          padding: 8px 14px;
-          font-size: 12px;
-          font-weight: 700;
-          border-radius: 4px;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          box-shadow: 0 2px 10px rgba(58, 107, 92, 0.2);
-          transition: all var(--transition-fast);
-        }
-
-        .edit-toggle-badge:hover {
-          transform: translateY(-1px);
-          opacity: 0.9;
-        }
-
-        .edit-toggle-badge.active {
-          background-color: #111111;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Bottom Menu Menu links */
+        /* Bottom Menu Menu links - White Background */
         .bottom-navigation-menu {
+          background-color: #FFFFFF;
           padding: 12px 0;
           border-bottom: 1px solid var(--border-color);
         }
@@ -334,10 +299,10 @@ export const Header: React.FC<HeaderProps> = ({
           color: #999999;
         }
 
-        /* Breadcrumbs */
+        /* Breadcrumbs - White Background */
         .breadcrumb-bar {
-          background-color: #FAF9F6;
-          padding: 8px 0;
+          background-color: #FFFFFF;
+          padding: 10px 0;
           border-bottom: 1px solid var(--border-color);
         }
 
