@@ -216,30 +216,33 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
       </div>
 
       {/* 7. Quantity counter & Bestel nu button */}
-      <div className="quantity-order-actions-row mt-6">
-        <div className="quantity-counter-widget">
-          <button 
-            className="counter-btn minus" 
-            onClick={() => setQuantity(q => Math.max(1, q - 1))}
-          >
-            -
+      <div className="form-section-group mt-6">
+        <h3 className="section-group-title">Aantal</h3>
+        <div className="quantity-order-actions-row">
+          <div className="quantity-counter-widget">
+            <button 
+              className="counter-btn minus" 
+              onClick={() => setQuantity(q => Math.max(1, q - 1))}
+            >
+              -
+            </button>
+            <span className="counter-value">{quantity}</span>
+            <button 
+              className="counter-btn plus" 
+              onClick={() => setQuantity(q => q + 1)}
+            >
+              +
+            </button>
+          </div>
+
+          <button className="add-to-cart-primary-btn">
+            Bestel nu! — € {totalPrice}
           </button>
-          <span className="counter-value">{quantity}</span>
-          <button 
-            className="counter-btn plus" 
-            onClick={() => setQuantity(q => q + 1)}
-          >
-            +
+
+          <button className="form-wishlist-heart-btn" aria-label="Add to wishlist">
+            ❤️
           </button>
         </div>
-
-        <button className="add-to-cart-primary-btn">
-          Bestel nu! — € {totalPrice}
-        </button>
-
-        <button className="form-wishlist-heart-btn" aria-label="Add to wishlist">
-          ❤️
-        </button>
       </div>
 
       {/* 8. Trust Badges row */}
@@ -998,22 +1001,30 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
           }
           
           .quantity-order-actions-row {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
           }
           
           .quantity-counter-widget {
-            width: 100%;
-            justify-content: space-between;
+            width: 90px;
+            flex-shrink: 0;
+          }
+          
+          .counter-btn {
+            width: 28px;
           }
           
           .add-to-cart-primary-btn {
-            width: 100%;
+            flex: 1;
+            min-width: 0;
           }
           
           .form-wishlist-heart-btn {
-            width: 100%;
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
           }
           
           .trust-badges-row {
