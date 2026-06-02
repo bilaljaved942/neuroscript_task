@@ -955,6 +955,72 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
           color: var(--color-accent);
           font-weight: 700;
         }
+        
+        /* Mobile and Tablet Responsiveness Updates */
+        @media (max-width: 600px) {
+          .product-form-container {
+            padding: 24px 16px;
+          }
+          
+          .sub-card-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+          }
+          
+          .sub-card-price-group {
+            align-items: flex-start;
+            width: 100%;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 10px;
+          }
+          
+          .sub-card-body-inclusions {
+            padding-left: 20px;
+            padding-right: 12px;
+          }
+          
+          .welcome-kit-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+          }
+          
+          .pricing-summary-block {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+          }
+          
+          .summary-right-box {
+            max-width: 100%;
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+          }
+          
+          .quantity-order-actions-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+          }
+          
+          .quantity-counter-widget {
+            width: 100%;
+            justify-content: space-between;
+          }
+          
+          .add-to-cart-primary-btn {
+            width: 100%;
+          }
+          
+          .form-wishlist-heart-btn {
+            width: 100%;
+          }
+          
+          .trust-badges-row {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+          }
+        }
       `}</style>
     </div>
   );

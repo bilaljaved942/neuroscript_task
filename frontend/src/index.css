@@ -84,6 +84,12 @@ body {
   padding: 0 24px;
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
 /* Layout Grid */
 .product-detail-layout {
   display: grid;

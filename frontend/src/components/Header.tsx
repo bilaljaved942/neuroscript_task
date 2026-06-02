@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* 4. Bottom Menu Navigation (White Background) */}
+      {/* 4. Bottom Menu Navigation (White Background - Swipeable on mobile) */}
       {navigation && navigation.length > 0 && (
         <nav className="bottom-navigation-menu">
           <div className="container nav-menu-container">
@@ -108,9 +108,10 @@ export const Header: React.FC<HeaderProps> = ({
         }
 
         .announcement-text {
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.5px;
+          line-height: 1.3;
         }
 
         /* 3 customer benefits bar */
@@ -137,12 +138,13 @@ export const Header: React.FC<HeaderProps> = ({
           gap: 4px;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .benefits-container {
             justify-content: center;
+            gap: 12px;
           }
           .benefit-item:not(:first-child) {
-            display: none;
+            display: none; /* Hide secondary benefits on small screens to conserve vertical height */
           }
         }
 
@@ -173,6 +175,7 @@ export const Header: React.FC<HeaderProps> = ({
           font-weight: 800;
           color: #111111;
           letter-spacing: -0.5px;
+          white-space: nowrap;
         }
 
         .brand-logo-leaf {
@@ -206,9 +209,9 @@ export const Header: React.FC<HeaderProps> = ({
           color: #888888;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 820px) {
           .header-search-bar {
-            display: none;
+            display: none; /* Hide search input on tablets/mobiles to fit brand logo and action icons */
           }
         }
 
@@ -258,7 +261,7 @@ export const Header: React.FC<HeaderProps> = ({
           border: 1px solid #FFFFFF;
         }
 
-        /* Bottom Menu Menu links - White Background */
+        /* Bottom Menu Navigation - Swipeable row on mobile */
         .bottom-navigation-menu {
           background-color: #FFFFFF;
           padding: 12px 0;
@@ -270,12 +273,6 @@ export const Header: React.FC<HeaderProps> = ({
           justify-content: center;
           gap: 40px;
           flex-wrap: wrap;
-        }
-
-        @media (max-width: 640px) {
-          .nav-menu-container {
-            gap: 20px;
-          }
         }
 
         .nav-menu-link {
@@ -309,6 +306,44 @@ export const Header: React.FC<HeaderProps> = ({
         .breadcrumb-text {
           font-size: 11px;
           color: #888888;
+        }
+
+        /* Media queries for tablet & mobile views */
+        @media (max-width: 600px) {
+          .main-brand-header {
+            padding: 14px 0;
+          }
+          .brand-logo-text {
+            font-size: 18px;
+          }
+          .brand-logo-leaf {
+            font-size: 16px;
+          }
+          .header-action-group {
+            gap: 8px;
+          }
+          .header-icon-btn {
+            font-size: 18px;
+            width: 32px;
+            height: 32px;
+          }
+          
+          /* Horizontal swipe navigation menu on mobile */
+          .bottom-navigation-menu {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 10px 0;
+          }
+          .nav-menu-container {
+            justify-content: flex-start;
+            gap: 24px;
+            flex-wrap: nowrap;
+            width: max-content;
+            padding: 0 16px;
+          }
+          .nav-menu-link {
+            font-size: 12px;
+          }
         }
       `}</style>
     </header>
