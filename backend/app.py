@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 import json
 
@@ -189,3 +190,8 @@ async def update_content(payload: dict):
 @app.get("/api/health")
 async def health_check():
     return {"status": "ok"}
+
+# Mount frontend build static files if the directory exists
+STATIC_DIR = BASE_DIR / "static"
+if STATIC_DIR.exists():
+    app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="static")
