@@ -6,5 +6,5 @@ Key Technical Highlights:
 - Tech Stack: Built using React (TypeScript + Vite) for the frontend, and Python (FastAPI) for the backend.
 - Layout & Responsiveness: Recreated the layout with pure Vanilla CSS, utilizing modern Flexbox, Grid, HSL variables, and media query controls to ensure the header navigation, columns, and counter widgets adapt gracefully to mobile, tablet, and desktop screens.
 - Dynamic Content Customization: All copy, lists, images, volumes, pricing, and subscription options are fetched dynamically on page mount from the backend `/api/content` endpoint.
-- Zero-Redeployment Updates: Page content can be modified instantly by editing the `backend/content.json` configuration file directly or by sending a PUT request to the `/api/content` endpoint. Changes persist on disk and reflect on reload without requiring rebuilds or new deployments.
+- Zero-Redeployment Updates: Page content can be modified by sending a PUT request to the `/api/content` endpoint. Changes persist on disk and reflect on reload without requiring rebuilds or new deployments.
 - Docker Integration: Included a multi-stage Dockerfile that builds the React assets and packages them with the FastAPI server on port 8000, along with a docker-compose setup for volume data persistence.
