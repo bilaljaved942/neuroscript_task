@@ -146,6 +146,9 @@ const DEFAULT_CONTENT: SiteContent = {
   }
 };
 
+// @ts-ignore
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 const App: React.FC = () => {
   const [content, setContent] = useState<SiteContent>(DEFAULT_CONTENT);
   const [loading, setLoading] = useState<boolean>(true);
@@ -155,7 +158,7 @@ const App: React.FC = () => {
     const fetchContent = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/content');
+        const response = await fetch(`${API_URL}/api/content`);
         if (!response.ok) {
           throw new Error(`Failed to load content: ${response.statusText}`);
         }
